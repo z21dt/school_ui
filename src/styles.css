@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("assets/forms.css");
+@import url("assets/simple-sidebar.css");
+header{background-color: blue; min-height: 130px;}
+header a{
+    background: url("assets/images/slra_logo.png");
+    display: block;
+    height: 165px;
+    background-repeat: no-repeat;
+}
+footer{
+    min-height: 260px;
+    padding-top: 50px;
+    color: #FFFFFF;
+    background: #262626;
+}
+footer .container div{display: inline-block; width: 30%;}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

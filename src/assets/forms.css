@@ -1,0 +1,7 @@
+.tab-pane h4{ padding-bottom: 25px;}
+.register-form{padding-top: 70px; min-height: 80%;}
+.register-form .bd-callout-warning{color:red; font-size: 10px;}
+.student-options{padding: 0px 30px;}
+
+/* HACK */
+.mat-radio-outer-circle{ border-style: none !important}
