@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SchoolConfig } from 'src/app/models/SchoolConfig';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,11 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
+  @Input('school') config:SchoolConfig; 
+
+  
   ngOnInit(): void {
+    console.log("Logo file name = "+this.config.schoolCode+"_logo.png");
   }
 
 }

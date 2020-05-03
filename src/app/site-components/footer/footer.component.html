@@ -1,8 +1,19 @@
 <footer>
     <div class="container">
-        <div>St. Lorenzo Ruiz</div>
-        <div>Contact Us</div>
-        <div>Terms and Conditions</div>
+        <div>
+            <p>{{config?.schoolName}}</p>
+            <p> {{config?.schoolDescription}} </p>
+        </div>
+        <div>Contact Us
+            <p>
+            <a href="mailto:{{config?.emailAddress}}" title="glorythemes">{{config?.emailAddress}}</a>
+            </p>
+        <p><a  title="glorythemes">{{config?.address}}</a></p>
+        <p><a  title="glorythemes">{{config?.contactNumber}}</a></p>
+        </div>
+        <div>
+                Terms and Conditions
+        </div>
     </div>
 </footer>
 
