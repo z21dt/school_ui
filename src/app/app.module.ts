@@ -21,6 +21,9 @@ import { StudentRegistrationComponent } from './registration/student-registratio
 import { StudentListComponent } from './reports/student-list/student-list.component';
 import { StudentRegistrationFormComponent } from './registration/student-registration-form/student-registration-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StudentRegistrationStatusComponent } from './registration/student-registration-status/student-registration-status.component';
+import { CheckStudentRegistrationStatusComponent } from './registration/check-student-registration-status/check-student-registration-status.component';
+import { SchoolLandingComponent } from './site-components/school-landing/school-landing.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     LandingPageComponent,
     StudentRegistrationComponent,
     StudentListComponent,
-    StudentRegistrationFormComponent
+    StudentRegistrationFormComponent,
+    StudentRegistrationStatusComponent,
+    CheckStudentRegistrationStatusComponent,
+    SchoolLandingComponent
   ],
   imports: [
     BrowserModule,

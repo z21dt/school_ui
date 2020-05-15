@@ -1,0 +1,14 @@
+<app-header [school]="config"></app-header>
+<div>
+    <h5>Check Online Application Status</h5>
+</div>
+<div>
+    {{regStatus?.studentName}} -  {{regStatus?.studentId}} 
+</div>
+
+<div> </div>
+{{regStatus?.enrollmentStatus}}
+<div> </div>
+<div>Registrar's Comment: </div>
+
+<app-footer [school]="config"></app-footer>

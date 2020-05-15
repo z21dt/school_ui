@@ -18,16 +18,11 @@ export class StudentRegistrationComponent implements OnInit {
   ){
    // this.createForm();
   }
-
   schoolId:string;
   
   @Input() config: SchoolConfig;
-
-
+   
   registerForm:FormGroup;
-
- 
-
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -38,6 +33,8 @@ export class StudentRegistrationComponent implements OnInit {
         this.config =  config;
         console.log('School Name: '+this.config.schoolName+ ' == '+config.schoolCode);
 /*
+
+
         if(config.schoolCode == 'UNKNOWN'){
             this.showMessage = true;
             console.log('showMessage: '+this.showMessage);
@@ -52,7 +49,7 @@ export class StudentRegistrationComponent implements OnInit {
   public createForm(){
     this.registerForm = this.fb.group({
       lastname: '',
-      firstname: '',
+      firstname: '', 
       middlename: '',
       
     });

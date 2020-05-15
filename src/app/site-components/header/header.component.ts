@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   
   ngOnInit(): void {
-    console.log("Logo file name = "+this.config.schoolCode+"_logo.png");
+    console.log("Logo file name = "+this.config?.schoolCode+"_logo.png");
   }
 
 }

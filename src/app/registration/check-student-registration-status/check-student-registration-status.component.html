@@ -1,0 +1,32 @@
+<app-header [school]="config"></app-header>
+
+<body>
+
+    <form [formGroup]="statForm"  >
+    <div> Check Online Application </div>
+
+    <div>User Id: <input type="text" id="studentId" formControlName="studentId"> </div>
+    <div>
+        <button type="submit" class="btn btn-primary"  (click)="onSubmit();">Submit</button>
+    </div>
+
+
+    <div>
+        {{regStatus?.studentName}} -  {{regStatus?.studentId}} 
+    </div>
+    
+    <div> </div>
+    {{regStatus?.enrollmentStatus}}
+    <div> </div>
+    <div>Registrar's Comment: </div>
+
+
+
+    <div>Email Address: <input type="text" id="emailAddress" formControlName="emailAddress"> </div>
+    <div>
+        <button  class="btn btn-primary" (click)="sendEmail()" >Send Email</button>
+    </div>
+    </form>
+
+</body>
+<app-footer [school]="config"></app-footer>
