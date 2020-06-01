@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Student } from '../models/Student';
 import { Observable } from 'rxjs';
 import { StudentRegStatus } from '../models/StudentRegStatus';
+import { Enrollee } from '../models/Enrollee';
 
 const httpOptions = {
   headers: new HttpHeaders(
@@ -41,19 +42,78 @@ export class StudentRegistrationService {
 */
 
    console.log('Sending Postsss');
-  var url = 'http://localhost:8080/schoolreg/registration/student/register';
+  //var url = 'https://immense-anchorage-42013.herokuapp.com/registration/student/register';
+  // var url = 'http://192.168.1.4:8080/schoolreg/registration/student/register';
+   var url = 'http://localhost:8080/schoolreg/registration/student/register';
     return this.http.put(url, student,httpOptions );
   }
 
   getRegistrationStatus(studentId:number, scode:string){
-    var url = "http://localhost:8080/schoolreg/registration/student/getRegistrationStatus?scode="+scode+"&studentId="+studentId;
+    //var url = "https://immense-anchorage-42013.herokuapp.com/registration/student/getRegistrationStatus?scode="+scode+"&studentId="+studentId;
+    // var url = "http://192.168.1.4:8080/schoolreg/registration/student/getRegistrationStatus?scode="+scode+"&studentId="+studentId;
+     var url = "http://localhost:8080/schoolreg/registration/student/getRegistrationStatus?scode="+scode+"&studentId="+studentId;
     return this.http.get<StudentRegStatus>(url);
   }
   
   sendStatusCheckEmail(emailAddress:string, scode:string){
-    var url =  "http://localhost:8080/schoolreg/registration/student/sendUserSearchEmail?scode="+scode+"&emailAddress="+emailAddress;
+    //var url =  "https://immense-anchorage-42013.herokuapp.com/registration/student/sendUserSearchEmail?scode="+scode+"&emailAddress="+emailAddress;
+    // var url =  "http://192.168.1.4:8080/schoolreg/registration/student/sendUserSearchEmail?scode="+scode+"&emailAddress="+emailAddress;
+     var url =  "http://localhost:8080/schoolreg/registration/student/sendUserSearchEmail?scode="+scode+"&emailAddress="+emailAddress;
     console.log("Sending email to "+url);   
     return this.http.get<string>(url);
   }
   
+
+  enrollSimplifiedVersion(enrollee:Enrollee, scode:string){
+    console.log('Enroll Na sa '+scode);
+    console.log(enrollee);
+
+    var url = 'http://localhost:3000/post_api/enroll';
+      return this.http.post(url, enrollee,httpOptions );
+  }
+
+
+  getEnrollees(scode:string){
+     var url = 'http://localhost:8080/schoolreg/enrollment/student/getEnrollees?scode='+scode;
+     return this.http.get<any>(url);
+  }
+
+
+  saveAttachmentDetails(scode:string, studentId:number, doc:string, path:string, filename:string){
+
+      var url = 'http://localhost:3000/post_api/saveAttachment';
+      return this.http.post(url, {
+                                  'studentId':studentId,
+                                  'docName':doc,
+                                  'path':path,
+                                  'schoolId':scode, 
+                                  'fileName':filename
+                                }   
+                            ,httpOptions );
+  }
+
+  getAttachments(scode:string, studentId:number){
+    var url = 'http://localhost:8080/schoolreg/enrollment/student/getAttachmentDetails?scode='+scode+'&studentId='+studentId;
+    return this.http.get<any>(url);
+ }
+
+ 
+  updateEnrollmentStatus(scode:string, studentId:number, enrollStatus:string, regNotes:string){
+
+    console.log('updateEnrollmentStatus');
+    var url = 'http://localhost:3000/post_api/updateEnrollmentStatus';
+
+    var req = 
+    {
+      'studentId':studentId,
+      'schoolId':scode, 
+      'enrollmentStatus':enrollStatus,
+      'regNotes':regNotes
+    };
+    
+    console.log(req);
+
+    return this.http.post(url, req 
+                          ,httpOptions );
+  }
 }

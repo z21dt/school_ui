@@ -1,5 +1,9 @@
 <div class="register-form container">
-        <form [formGroup]="registerForm"   (ngSubmit)="onSubmit();">
+        <div> 
+            <p class="coa_header"> Online Application </p> 
+        </div>
+        <div class="line"></div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit();">
             <mat-radio-group class="student-type-radio-group" formControlName="sType">
                 <mat-radio-button class="student-type-radio-button student-options" *ngFor="let studentType of studentTypes" [value]="studentType">
                 {{studentType}}
@@ -12,12 +16,20 @@
                     <p>All fields denoted by an asterisk(*) are required.</p>
                 </div>
                 <div class="form-group row">
-                    <label for="lastname" class="col-sm-2 col-form-label">Last Name</label>
+                    <label for="completeName" class="col-sm-2 col-form-label">Name of Student *
+                        <p>Last Name, First Name &nbsp; Middle Name</p>
+                    </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" formControlName="lastname">
+                        <input type="text" class="form-control" id="completeName" formControlName="completeName">
                     </div>
                 </div>
                 <div class="form-group row">
+                    <label for="birthday" class="col-sm-2 col-form-label">Birthday</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="birthday" formControlName="birthday">
+                    </div>
+                </div>     
+                <!-- <div class="form-group row">
                     <label for="firstname" class="col-sm-2 col-form-label">First Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="firstname" formControlName="firstname">
@@ -28,36 +40,67 @@
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="middlename" formControlName="middlename">
                     </div>
-                </div> 
+                </div>  
                 <div class="form-group row">
                     <label for="extensionname" class="col-sm-2 col-form-label">Extension Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="extensionname" formControlName="extensionname">
                     </div>
-                </div>  
+                </div>  -->
                 <div class="form-group row">
-                    <label for="emailaddress" class="col-sm-2 col-form-label">Email Address</label> 
+                    <label for="schoolIDNumber" class="col-sm-2 col-form-label">School ID Number</label> 
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="schoolIDNumber" formControlName="schoolIDNumber">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label for="schoolPicture" class="col-sm-2 col-form-label">Attach picture of School ID
+                        <p>Needed to secure your identity</p>
+                    </label> 
+                    <div class="col-md-7">
+                        <input type="text" formControlName="schoolPicture" class="form-control"/>
+                    </div>
+                    <div class="col-md-2"> 
+                        <input type="file" name="schoolPictureID" (change)="onSelectSchoolIDPic($event)"/>
+                    </div> 
+                </div> 
+                <div class="form-group row">
+                    <label for="emailaddress" class="col-sm-2 col-form-label">Active Email Address
+                        <p>Valid Email or Recognized Email</p>
+                    </label> 
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="emailaddress" formControlName="emailaddress">
                     </div>
                 </div> 
                 <div class="form-group row">
-                    <label for="phonenumber" class="col-sm-2 col-form-label">Phone Number</label>
+                    <label for="phonenumber" class="col-sm-2 col-form-label">Active Mobile Number</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="phonenumber" formControlName="phonenumber">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="lrn" class="col-sm-2 col-form-label">Learner Reference Number (LRN)  <p style="font-size: 10px;">N/A if not applicable <br/>This is in your child's report card</p></label> 
+                    <label for="lrn" class="col-sm-2 col-form-label">Learner Reference Number (LRN)  
+                        <p>N/A if not applicable <br/>This is in your child's report card</p></label> 
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="lrn" formControlName="lrn">
                     </div>
                 </div> 
+                <div class="form-group row">
+                    <label for="dataPrivacyAgreement" class="col-sm-10 col-form-label">Data Privacy Agreement
+                        <p>I/We hereby authorize |School Name| to retain, process, disseminate and record
+                            all my personal data in any way the school...... </p>
+                    </label>
+                </div> 
+
                 
                 
                 <div class="form-group row">
-                    <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Register Old</button>
+                    <div class="col col-sm-6"> </div>
+                    <div class="col col-sm-2 submit_btn">
+                        <button type="submit" class="btn btn-danger">Cancel</button>
+                    </div>
+                    <div class="col col-sm-2 submit_btn">
+                        <button type="submit" class="btn btn-primary">Continue</button>
                     </div>
                 </div>  
             </div>
@@ -70,18 +113,321 @@
             
 
             <div id="new-student-form" *ngSwitchCase="'New Student/Transferee'">
-                
+                <div *ngIf="newStud_BasicInfo_Form1">
+                    <div class="bd-callout bd-callout-warning">
+                        <p>All fields denoted by an asterisk(*) are required.</p>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" >
+                            <p class="basic-info">Basic Information</p>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudCompleteName" class="col-sm-2 col-form-label" required>Name of Student *
+                            <p>Last Name, First Name &nbsp; Middle Name</p>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudCompleteName" formControlName="newStudCompleteName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudEmailaddress" class="col-sm-2 col-form-label">Active Email Address
+                            <p>Valid Email or Recognized Email</p>
+                        </label> 
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudEmailaddress" formControlName="newStudEmailaddress">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label for="newStudphonenumber" class="col-sm-2 col-form-label">Active Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudphonenumber" formControlName="newStudphonenumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudgradeLevel" class="col-sm-2 col-form-label">Grade Level Applying For:</label>
+                        <div class="col-sm-10">
+                            <select formControlName="newStudgradeLevel" class="col-sm-10">
+                                <option disabled>------- Select grade level ------</option>
+                                <option *ngFor="let gradeLvl of gradeLevel">{{gradeLvl}}</option>
+                            </select>
+                        </div>
+                    </div>  
+                    <div class="form-group row">
+                        <label for="newlrn" class="col-sm-2 col-form-label">Learner Reference Number (LRN)  
+                            <p>N/A if not applicable <br/>This is in your child's report card</p></label> 
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newlrn" formControlName="newlrn">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label for="newStudBirthday" class="col-sm-2 col-form-label">Birthday</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudBirthday" formControlName="newStudBirthday">
+                        </div>
+                    </div>     
+                    <div class="form-group row">
+                        <label for="newStudGender" class="col-sm-2 col-form-label">Gender</label> 
+                        <div class="col-sm-10">
+                            <mat-radio-group class="student-type-radio-group" formControlName="newStudGender">
+                                <mat-radio-button class="student-type-radio-button student-options" *ngFor="let gndr of gender" [value]="gndr">
+                                {{gndr}}
+                                </mat-radio-button>
+                            </mat-radio-group> 
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudNationality" class="col-sm-2 col-form-label">Nationality</label> 
+                        <div class="col-sm-10">
+                            <select formControlName="newStudNationality" class="col-sm-10">
+                                <option disabled>------- Select Nationality ------</option>
+                                <option *ngFor="let nation of nationality">{{nation}}</option>
+                            </select>
+                        </div>
+                    </div>  
+                    <div class="form-group row">
+                        <label for="newStudMailingAd" class="col-sm-2 col-form-label">Complete Mailing Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMailingAd" formControlName="newStudMailingAd" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="lrn" class="col-sm-10 col-form-label">Data Privacy Agreement
+                            <p>I/We hereby authorize |School Name| to retain, process, disseminate and record
+                                all my personal data in any way the school...... </p>
+                        </label>
+                    </div> 
+                    <div class="form-group row">
+                        <div class="col col-sm-6"> </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-primary" (click)="newStudBasicInfoContinue();">Continue</button>
+                        </div>
+                    </div>
+                </div>
 
-          
+                <div *ngIf="newStud_FamilyInfo_Form2">
+                    <div class="bd-callout bd-callout-warning">
+                        <p>All fields denoted by an asterisk(*) are required.</p>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" >
+                            <p class="basic-info">Family Background</p>
+                        </label>
+                    </div>
+                    <!-- Fathers Information -->
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label">
+                            <p class="new_stud_info">Father's Information</p>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudFathersName" class="col-sm-2 col-form-label" required>Father's Name *
+                            <p>Last Name, First Name &nbsp; Middle Name</p>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudFathersName" formControlName="newStudFathersName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudFathersOccupation" class="col-sm-2 col-form-label">Father's Occupation *
+                        </label> 
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudFathersOccupation" formControlName="newStudFathersOccupation">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label for="newStudFathersphonenumber" class="col-sm-2 col-form-label">Father's Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudFathersphonenumber" formControlName="newStudFathersphonenumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudFathersEmailAdd" class="col-sm-2 col-form-label">Father's Email Address/Facebook Account Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudFathersEmailAdd" formControlName="newStudFathersEmailAdd">
+                        </div>
+                    </div>   
+                    <div class="form-group row">
+                        <label for="newStudFathersMailingAd" class="col-sm-2 col-form-label">Complete Mailing Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudFathersMailingAd" formControlName="newStudFathersMailingAd">
+                        </div>
+                    </div>
+                    <!-- Mothers Information -->
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label">
+                            <p class="new_stud_info">Mother's Information</p>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudMothersName" class="col-sm-2 col-form-label" required>Mother's Name *
+                            <p>Last Name, First Name &nbsp; Middle Name</p>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMothersName" formControlName="newStudMothersName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudMothersOccupation" class="col-sm-2 col-form-label">Mother's Occupation *
+                        </label> 
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMothersOccupation" formControlName="newStudMothersOccupation">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label for="newStudMothersphonenumber" class="col-sm-2 col-form-label">Mother's Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMothersphonenumber" formControlName="newStudMothersphonenumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudMothersEmailAdd" class="col-sm-2 col-form-label">Mother's Email Address/Facebook Account Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMothersEmailAdd" formControlName="newStudMothersEmailAdd">
+                        </div>
+                    </div>   
+                    <div class="form-group row">
+                        <label for="newStudMothersMailingAd" class="col-sm-2 col-form-label">Complete Mailing Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudMothersMailingAd" formControlName="newStudMothersMailingAd">
+                        </div>
+                    </div>
+                    <!-- Guardians Information -->
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label">
+                            <p class="new_stud_info">Guardian's Information</p>
+                        </label>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudGuardiansName" class="col-sm-2 col-form-label" required>Guardian's Name *
+                            <p>Last Name, First Name &nbsp; Middle Name</p>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudGuardiansName" formControlName="newStudGuardiansName">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newStudGuardiansOccupation" class="col-sm-2 col-form-label">Guardian's Occupation *
+                        </label> 
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudGuardiansOccupation" formControlName="newStudGuardiansOccupation">
+                        </div>
+                    </div> 
+                    <div class="form-group row">
+                        <label for="newStudGuardiansphonenumber" class="col-sm-2 col-form-label">Guardian's Mobile Number</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudGuardiansphonenumber" formControlName="newStudGuardiansphonenumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="newGuardiansEmailAdd" class="col-sm-2 col-form-label">Guardian's Email Address/Facebook Account Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newGuardiansEmailAdd" formControlName="newGuardiansEmailAdd">
+                        </div>
+                    </div>   
+                    <div class="form-group row">
+                        <label for="newStudGuardiansMailingAd" class="col-sm-2 col-form-label">Complete Mailing Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="newStudGuardiansMailingAd" formControlName="newStudGuardiansMailingAd">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col col-sm-6"> </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-primary" (click)="newStudFamilyInfoContinue();">Continue</button>
+                        </div>
+                    </div>
+                    
+                </div>
 
+                <div *ngIf="newStud_RequiredDoc_Form3">
+                    <div class="bd-callout bd-callout-warning">
+                        <p>All fields denoted by an asterisk(*) are required.</p>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-8 col-form-label" >
+                            <p class="basic-info">Required Documents</p>
+                        </label>
+                    </div>
+                    <div class="row form-group contact_reg">
+                        <div class="col-md-3"> 
+                            <span> Lacking of Deposit Slip:</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <input type="text" formControlName="name_deposit" class="form-control"/>
+                        </div>
+                        <div class="col-md-2"> 
+                            <input type="file" name="profile_deposit"/>
+                        </div> 
+                    </div>
+                    <div class="row form-group contact_reg">
+                        <div class="col-md-3"> 
+                            <span> 1. Recent 2x2 ID Picture with clear backgroud</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <input type="text" formControlName="rd1_name" class="form-control"/>
+                        </div>
+                        <div class="col-md-2"> 
+                            <input type="file" name="rd1_file"/>
+                        </div> 
+                    </div>
+                    <div class="row form-group contact_reg">
+                        <div class="col-md-3"> 
+                            <span> 2. Latest Report Card-DepEd Form 138</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <input type="text" formControlName="rd2_name" class="form-control"/>
+                        </div>
+                        <div class="col-md-2"> 
+                            <input type="file" name="rd2_file"/>
+                        </div> 
+                    </div>
+                    <div class="row form-group contact_reg">
+                        <div class="col-md-3"> 
+                            <span> 3. PSA Birth Certificate</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <input type="text" formControlName="rd3_name" class="form-control"/>
+                        </div>
+                        <div class="col-md-2"> 
+                            <input type="file" name="rd3_file"/>
+                        </div> 
+                    </div>
+                    <div class="row form-group contact_reg">
+                        <div class="col-md-3"> 
+                            <span> 4. Good Moral Character</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <input type="text" formControlName="rd4_name" class="form-control"/>
+                        </div>
+                        <div class="col-md-2"> 
+                            <input type="file" name="rd4_file"/>
+                        </div> 
+                    </div>
+                    <div class="form-group row">
+                        <div class="col col-sm-6"> </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-danger">Cancel</button>
+                        </div>
+                        <div class="col col-sm-2 submit_btn">
+                            <button type="submit" class="btn btn-primary">Continue</button>
+                        </div>
+                    </div>
+                </div>
 
             <!--  paste here-->
-
-            <div class="form-group row">
+              
+            <!-- <div class="form-group row">
                 <div class="col-sm-10">
                     <button type="submit" class="btn btn-primary">Register New</button>
                 </div>
-            </div>  
+            </div>   -->
             <!-- END TABS DIV -->
 
             </div>

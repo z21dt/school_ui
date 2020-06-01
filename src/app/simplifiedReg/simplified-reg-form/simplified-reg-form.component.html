@@ -1,0 +1,324 @@
+<app-header [school]="config"></app-header>
+
+
+<div  class="register-form container">
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit();">
+        <p class="coa_header"> Online Registration </p> 
+
+        <div [hidden]="hideInputFields">
+            <div> 
+                <mat-radio-group  class="student-type-radio-group" formControlName="sType">
+                    <mat-radio-button *ngFor="let studentType of studentTypes" [value]="studentType" (change)="typeRadioChange($event)">
+                    {{studentType}}
+                    </mat-radio-button>
+                </mat-radio-group>  
+
+            </div>
+            <p class="coa_header2"> Student's Information </p> 
+            <div class="line"></div>
+            <div class="form-group row">
+                <label for="firstName" class="col-sm-2 col-form-label">First Name*
+                </label>
+                <div class="col-sm-6">
+                    <input required type="text" class="form-control" id="firstName"  formControlName="firstName" >
+                </div>
+            </div> 
+            <div class="form-group row">
+                <label for="completeName" class="col-sm-2 col-form-label">Middle Name
+                </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="middleName"  formControlName="middleName" >
+                </div>
+            </div> 
+            <div class="form-group row">
+                <label for="completeName" class="col-sm-2 col-form-label">Last Name*
+                </label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="lastName"  formControlName="lastName" >
+                </div>
+            </div>                
+            <div class="form-group row">
+                <label for="newStudGender" class="col-sm-2 col-form-label" >Gender*</label> 
+                <div class="col-sm-8">
+                    <mat-radio-group class="student-type-radio-group" formControlName="studGender">
+                        <mat-radio-button class="student-type-radio-button student-options" *ngFor="let gndr of gender" [value]="gndr">
+                        {{gndr}}
+                        </mat-radio-button>
+                    </mat-radio-group> 
+                </div>
+            </div>    
+            <div class="form-group row">
+                <label for="birthDay" class="col-sm-2 col-form-label">Birth Date*
+                    <p>MM/DD/YYYY</p>
+                </label>
+                <div class="col-sm-4">      
+                    <input type="text" class="form-control" id="birthDay" formControlName="birthDay"   placeholder ="MM/DD/YYYY">
+                </div>
+            </div>     
+            
+        
+            <div class="form-group row">
+                <label for="newStudgradeLevel" class="col-sm-2 col-form-label">Grade Level*
+                    <p>for SY 2020-2021</p>
+                </label>
+                <div class="col-sm-5">
+                    <select class="form-control col-sm-10" formControlName="gradeLevel"> 
+                        <option disabled>------- Select grade level ------</option>
+                        <option *ngFor="let gradeLvl of gradeLevel">{{gradeLvl}}</option>
+                    </select>
+                </div>
+                
+            </div>  
+
+
+
+            <div [hidden]="hideNewStudentFields">
+                <div class="form-group row">
+                    <label for="newStudEmailaddress" class="col-sm-2 col-form-label">Last School Attended
+                        <p>for Tranferees only</p>
+                    </label> 
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="lastSchool" formControlName="lastSchool">
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <label for="newStudEmailaddress" class="col-sm-2 col-form-label">School Address
+                        <p>for Tranferees only</p>
+                    </label> 
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="lastSchoolAddress" formControlName="lastSchoolAddress">
+                    </div>
+                </div> 
+            </div>
+
+
+
+            <p class="coa_header2"> Guardian / Parent's Information </p> 
+            <div class="line"></div>
+
+            <div class="form-group row">
+                <label for="parentName" class="col-sm-2 col-form-label">Guardian / Parent's Name*
+                </label>
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" id="parentName"  formControlName="parentName" >
+                </div>
+            </div> 
+            <div class="form-group row">
+                <label for="addres" class="col-sm-2 col-form-label">Address*
+                </label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="address" formControlName="address">
+                </div>
+            </div> 
+
+
+            <div class="form-group row">
+                <label for="contactNumber" class="col-sm-2 col-form-label">Contact Number*
+                </label> 
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber">
+                </div>
+            </div> 
+
+            <div class="form-group row">
+                <label for="emailAddress" class="col-sm-2 col-form-label">Email Address*
+                </label> 
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="emailAddress" formControlName="emailAddress">
+                </div>
+            </div> 
+
+            <div class="form-group row">
+                <label for="verEmailAddress" class="col-sm-2 col-form-label">Verify Email Address*
+                </label> 
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="verEmailAddress" formControlName="verEmailAddress">
+                </div>
+            </div> 
+            <div class="line"></div>
+            <div class="form-group row">
+                <label for="notes" class="col-sm-2 col-form-label">Enrollment Notes
+                </label> 
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="notes" formControlName="notes" placeholder ="Kindly enter other concerns here...">
+                </div>
+            </div> 
+    <!--
+            <div *ngIf="registerForm.value.firstName.invalid && (registerForm.value.firstName.dirty || registerForm.value.firstName.touched)"
+                class="alert alert-danger">
+            <div *ngIf="registerForm,value.firstName.errors.required">
+                Name is required.
+            </div
+        
+        </div>
+    -->
+    <div  [hidden]="!hasValidationIssue">
+        <div class="line"></div>
+    
+          <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Please fill the following:</h4>
+            <hr>
+            <p class="mb-0">{{validationMessage}}.</p>
+          </div>
+    </div>
+
+
+            <div class="form-group row">
+                <div class="col col-sm-10"> </div>
+                <div class="col col-sm-2 submit_btn">
+                    <button type="submit" class="btn btn-primary">Continue</button>
+                </div>
+            </div>
+    </div>
+
+    <div [hidden]="hidePaymentPanel"> 
+
+        <p class="coa_header2">Payment options </p> 
+        <div class="line"></div> 
+    
+
+        <div class="form-group row">
+            <div class="radio">
+                <label><input type="radio" name="paymentOption" value="otc" formControlName="paymentOption">      Pay over the counter at the school.</label>
+              </div>
+        </div> 
+        <div class="form-group row">
+            <div class="radio">
+                <label><input type="radio" name="paymentOption" value="bank"  formControlName="paymentOption" >      Bank Deposit.</label>
+              </div>
+        </div> 
+        <div class="form-group row">
+            <div class="radio">
+                <label><input type="radio" name="paymentOption" value="padala"  formControlName="paymentOption">      Pera Padala thru LBC, Palawan, M Lhullier or Cebuana Lhullier.</label>
+              </div>
+        </div> 
+        <div class="form-group row">
+            <div class="radio">
+                <label><input type="radio" name="paymentOption" value="card" formControlName="paymentOption">      Debit Card or Credit Card</label>
+              </div>
+        </div> 
+
+        <div class="form-group row">
+            <div class="radio">
+                <label><input type="radio" name="paymentOption" value="paypal" formControlName="paymentOption">      Paypal Account</label>
+              </div>
+        </div> 
+
+
+       
+ 
+        <div class="form-group row">
+            <div class="col col-sm-6"> </div>        
+            <div class="col col-sm-3 submit_btn">
+                <!-- <button (click)="checkStatus()" class="btn btn-primary">Registration Status</button> -->
+            </div>
+            <div> </div>
+            <div class="col col-sm-3 submit_btn">
+                <button (click)="continuePayment()" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+
+    <!--- CONFIRMATION PANEL -->
+
+    <div [hidden]="hideConfirmationPanel">
+        <div class="line"></div> 
+
+
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading"> Well done, {{registerForm.get('firstName').value}}!</h4>
+            <hr>
+            <p class="mb-0">Thank you for registering <b>{{registerForm.get('firstName').value}}  {{registerForm.get('lastName').value}}</b> to <b>{{config?.schoolName}}!</b></p>
+            <br>
+
+            <div *ngIf="payPadala()">
+                <p>Pay thru Pera Padala using the following details:</p>
+                <hr>
+                <p> Recipient:
+                <br>
+                <p>    Name: GENRIETTA N. MANLA       </p> 
+                <p>    Mobile No. 0909-819-3622</p>
+                <p>    Address: Apokon, Tagum City, 8100 Davao del Norte</p>
+                <hr>
+                <p>We emailed your registration <b>CODE</b> and link on how to upload your transaction slip to <b>{{registerForm.get('emailAddress').value}}</b>.</p>
+
+            </div>
+            <div *ngIf="payCard()">
+                <p>An email coming from paypal will be emailed to {{registerForm.get('emailAddress').value}} for your invoice and links on how to pay Credit/Debit card.</p>
+                <p>We also emailed your registration <b>CODE</b></p>
+            </div>
+
+            <div *ngIf="payPal()">
+                Please click here to process you payment: <a target="_blank" href="https://www.paypal.me/slrataguminc/500PHP">
+                    <img src="assets/images/paypal_v.png" width="50" height="50" class="d-inline-block align-center" alt="Paypal">
+                </a>
+                <hr>
+                <p>We emailed your registration <b>CODE</b> to <b>{{registerForm.get('emailAddress').value}} </b> .</p>
+
+            </div>
+
+            <div *ngIf="payOTC()">
+                
+
+                <p>See you at SLRA!!!</p>
+                <hr>
+                <p>We emailed your registration <b>CODE</b> to <b>{{registerForm.get('emailAddress').value}} </b> .</p>
+
+                
+            </div>
+            <div *ngIf="payBank()"> 
+
+                <p>You may deposit your payment in this account:</p>
+                <hr>
+                
+                <p>Bank Name: Land Bank of the Philippines</p>          
+                <p>Branch: National Highway, Tagum City Branch     </p>         
+                <p>Account No: 0341-2537-56 </p>              
+                <p>Account Type: Savings Account  </p>              
+                <p>Account Name: St. Lorenzo Ruiz Academy of Tagum, Inc.</p>
+                <hr>
+                <p>We emailed your registration <b>CODE</b> to <b>{{registerForm.get('emailAddress').value}} </b> .</p>
+            </div>
+
+        
+            <p class="mb-0">To view the details and monitor the status of your registration, just login using that code. Our Registrar will contact you in this number <b>{{registerForm.get('contactNumber').value}} </b> within 2 or 3 days from now.</p>
+            <br>
+            <p class="mb-0">Should you have any questions or other concerns, you may call us at <b>{{config?.contactNumber}}</b>  or send email to us at <b>{{config?.emailAddress}}</b>.</p>
+            <br>
+            <h4 class="alert-heading">Have faith and believe!</h4>
+        </div>
+
+
+ 
+
+       
+
+
+
+            <div class="form-group row">
+                <div class="col col-sm-6"> </div>        
+                <div class="col col-sm-3 submit_btn">
+                    <!-- <button (click)="checkStatus()" class="btn btn-primary">Registration Status</button> -->
+                </div>
+                <div> </div>
+                <div class="col col-sm-3 submit_btn">
+                    <button (click)="goBack()" class="btn btn-primary">Register Another</button>
+                </div>
+            </div>
+        </div>
+
+                    <!-- VALIDATION MESSAGE PANEL -->
+
+
+
+
+    </form>
+</div>
+
+
+<app-footer [school]="config"  ></app-footer>
+
+
+
+

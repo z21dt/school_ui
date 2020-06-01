@@ -1,32 +1,69 @@
 <app-header [school]="config"></app-header>
 
-<body>
+<body ng-app="">
+    <div >
+        <form [formGroup]="statForm">
+        <div *ngIf="!hideInfo">
+            <div> 
+                <p class="coa_header"> Check Online Application Status</p> 
+            </div>
+            <div class="line"></div>
+            <!-- <div [class]="!regStatus?.enrollmentStatus && regStatus?.enrollmentStatus == null ? '' : 'ng-hide'" > -->
+            <div>
+                <div class="dsc_coa"><p>Enter your registration code the we sent to your email.</p></div>
+                
+                <div class="row"> 
+                    <div class="col col-lg-2 userID_txt">Student registration code &nbsp;: </div>
+                    <div class="col-md-auto txtfield_user">
+                        <input type="text" formControlName="studentId" id="studentId" class="form-control"/>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col col-lg-2  contact_reg">
+                        <span (click)="forgetUserId();">Forget the registration code?</span>
+                    </div>
+                    <div class="col-md-auto submit_btn">
+                        <button type="submit" class="btn btn-primary " (click)="onSubmit();">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <form [formGroup]="statForm"  >
-    <div> Check Online Application </div>
-
-    <div>User Id: <input type="text" id="studentId" formControlName="studentId"> </div>
-    <div>
-        <button type="submit" class="btn btn-primary"  (click)="onSubmit();">Submit</button>
+  
+        <div *ngIf="!hideForgetPass">
+            <div> 
+                <p class="coa_header"> Check Online Application </p> 
+            </div>
+            <div class="line"></div>
+            <div class="dsc_coa"><p>Forget User ID</p></div>
+            <div  class="row" *ngIf="!hideEmailResponse">
+                <div class="alert alert-success alert-dismissible fade show" style="margin-left: 5%">
+                    <strong>Success!</strong> {{ emailResponse }}
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                </div>
+            </div>
+            <div class="row"> 
+                <div class="col col-lg-3 frgt_userId">User ID will be emailed to your registered email address &nbsp;: </div>
+                <div class="col-md-auto txtfield_user">
+                    <input type="text" id="emailAddress" class="form-control" formControlName="emailAddress" placeholder="Email"/> 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-lg-3 contact_reg">
+                    <span>Contact Registrar </span>
+                </div>
+                <div class="col-md-auto submit_btn">
+                    <button  class="btn btn-primary" (click)="sendEmail()" >Continue</button>
+                </div>
+            </div>
+        </div>
+        </form>
     </div>
-
-
-    <div>
-        {{regStatus?.studentName}} -  {{regStatus?.studentId}} 
+    <div *ngIf="!hidePending">
+        <app-check-student-reg-status-pending [regStatusPending]="dataBindStatus" [schoolId]="schoolId"></app-check-student-reg-status-pending>
     </div>
-    
-    <div> </div>
-    {{regStatus?.enrollmentStatus}}
-    <div> </div>
-    <div>Registrar's Comment: </div>
-
-
-
-    <div>Email Address: <input type="text" id="emailAddress" formControlName="emailAddress"> </div>
-    <div>
-        <button  class="btn btn-primary" (click)="sendEmail()" >Send Email</button>
+    <div *ngIf="!hideEnrolled">
+        <app-check-student-reg-status-enrolled [regStatusEnrolled]="dataBindStatus"></app-check-student-reg-status-enrolled>
     </div>
-    </form>
-
 </body>
 <app-footer [school]="config"></app-footer>

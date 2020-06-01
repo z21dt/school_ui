@@ -1,0 +1,64 @@
+<div> 
+    <p class="coa_header"> Check Online Application </p> 
+</div>
+<div class="line"></div>
+<div>
+    <p class="student-info">Registration Code: </p>
+</div>
+<div>
+    <p class="student-info-value">{{regStatusPending?.studentId}} </p>
+</div>
+<div>
+    <p class="student-info">Student's Name: </p> <p class="student-info-value">{{regStatusPending?.studentName}} </p>
+</div>
+<div>
+    
+</div>
+<div> 
+    <p [class]="regStatusPending?.enrollmentStatus === 'Pending' ? 'student-status-pending' : 'student-status-enrolled'"> {{regStatusPending?.enrollmentStatus}} </p>
+</div>
+<div class="student-info">Registrar's Comment: </div>
+<div class="reg-comment">{{regStatusPending?.statusMessage}} </div>
+<!--
+<div class="reg-pending">
+    <app-upload [studentFormInfo]="regStatusPending"></app-upload>
+</div>
+-->
+
+<div ><p></p> </div>
+<div class="line"></div> 
+
+<div ><p></p> </div>
+<div class="form-group row"  *ngIf="!isFileUploaded">
+    <label class="col-sm-2 col-form-label fileupload">Prof of payment</label> 
+
+    <div  class="col-sm-8 " >
+        <input type="file" (change)="onFileSelected($event)">
+        <button type="button" class="btn btn-primary "  (click)="onUpload();">Upload</button> 
+    </div>
+</div>
+<div class="form-group row"  *ngIf="isFileUploaded">
+    <label class="col-sm-8 col-form-label fileupload">Thank you for your payment, we will contact you once we verify your document.</label> 
+
+    <div  class="col-sm-2 " >
+
+    </div>
+</div>
+
+
+<div ><p></p> </div>
+<div class="line"></div>
+
+<div>
+    <div class="row">
+        <div class="col col-lg-10  contact_reg">
+            <span> </span>
+        </div>
+        <div class="col-md-auto submit_btn">
+            <!-- <button type="button" class="btn btn-primary "  (click)="sendEmail();">Done</button> -->
+            <a href="slra/registration/checkStatus" class="btn btn-primary">
+                Check Another
+            </a>
+        </div>
+    </div>
+</div>

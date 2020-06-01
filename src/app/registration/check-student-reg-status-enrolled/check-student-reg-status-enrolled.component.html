@@ -1,0 +1,27 @@
+<div> 
+    <p class="coa_header"> Check Online Application </p> 
+</div>
+<div class="line"></div>
+<div>
+    <p class="student-info">{{regStatusEnrolled?.studentName}} -  {{regStatusEnrolled?.studentId}} </p>
+</div>
+<div> 
+    <p [class]="regStatusEnrolled?.enrollmentStatus === 'Pending' ? 'student-status-pending' : 'student-status-enrolled'"> {{regStatusEnrolled?.enrollmentStatus}} </p>
+</div>
+<div class="student-info">Registrar's Comment: </div>
+<div class="reg_message">
+    {{regStatusEnrolled?.statusMessage}}
+</div>
+
+
+<div>
+    <div class="row">
+        <div class="col col-lg-3  contact_reg">
+            <span>Contact Registrar</span>
+        </div>
+        <div class="col-md-auto submit_btn">
+            <!-- <button type="button" class="btn btn-primary "  (click)="sendEmail();">Done</button> -->         
+            <button type="button" class="btn btn-primary ">Check Another</button>
+        </div> 
+    </div>
+</div>

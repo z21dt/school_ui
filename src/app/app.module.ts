@@ -5,7 +5,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // Radio Button
 import {MatRadioModule} from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { AppComponent } from './app.component';
+
+
 
 //import { RegisterFormComponent } from './register-form/register-form.component';
 
@@ -24,6 +28,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { StudentRegistrationStatusComponent } from './registration/student-registration-status/student-registration-status.component';
 import { CheckStudentRegistrationStatusComponent } from './registration/check-student-registration-status/check-student-registration-status.component';
 import { SchoolLandingComponent } from './site-components/school-landing/school-landing.component';
+import { CheckStudentRegStatusPendingComponent } from './registration/check-student-reg-status-pending/check-student-reg-status-pending.component';
+import { CheckStudentRegStatusEnrolledComponent } from './registration/check-student-reg-status-enrolled/check-student-reg-status-enrolled.component';
+import { UploadComponent } from './upload/upload.component';
+import { from } from 'rxjs';
+import { SimplifiedRegFormComponent } from './simplifiedReg/simplified-reg-form/simplified-reg-form.component';
+import { PaypalPaymentFormComponent } from './registration/paypal-payment-form/paypal-payment-form.component';
+import { StudentRegListComponent } from './registration/student-reg-list/student-reg-list.component';
+import { StudentRegListItemComponent } from './registration/student-reg-list-item/student-reg-list-item.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +52,14 @@ import { SchoolLandingComponent } from './site-components/school-landing/school-
     StudentRegistrationFormComponent,
     StudentRegistrationStatusComponent,
     CheckStudentRegistrationStatusComponent,
-    SchoolLandingComponent
+    SchoolLandingComponent,
+    CheckStudentRegStatusPendingComponent,
+    CheckStudentRegStatusEnrolledComponent,
+    UploadComponent,
+    SimplifiedRegFormComponent,
+    PaypalPaymentFormComponent,
+    StudentRegListComponent,
+    StudentRegListItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,6 +69,7 @@ import { SchoolLandingComponent } from './site-components/school-landing/school-
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

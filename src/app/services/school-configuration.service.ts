@@ -17,7 +17,9 @@ export class SchoolConfigurationService {
    
       console.log('School ID '+schoolId);
       
-      return this.http.get<SchoolConfig>("http://localhost:8080/schoolreg/admin/schools/getSchoolConfig?schoolCode="+schoolId);
+      //return this.http.get<SchoolConfig>("https://immense-anchorage-42013.herokuapp.com/admin/schools/getSchoolConfig?schoolCode="+schoolId);
+      // return this.http.get<SchoolConfig>("http://192.168.1.4:8080/schoolreg/admin/schools/getSchoolConfig?schoolCode="+schoolId);
+       return this.http.get<SchoolConfig>("http://localhost:8080/schoolreg/admin/schools/getSchoolConfig?schoolCode="+schoolId);
       //return this.http.get<SchoolConfig>("https://immense-anchorage-42013.herokuapp.com/admin/schools/getSchoolConfig?schoolId="+schoolId);
   }
 }

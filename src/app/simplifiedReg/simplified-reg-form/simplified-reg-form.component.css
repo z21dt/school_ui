@@ -1,0 +1,144 @@
+.radio{
+    margin-left: 20px;
+}
+.mb-0{
+    font-size:12px;
+}
+.alert-heading{
+    font-size:16px;
+}
+.mat-radio-button {
+    margin-left: 16px;
+    font-size:12px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+  }
+  
+ 
+.coa_header {
+    margin-top: 10px;
+    font-size: 20px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: dodgerblue;
+}
+
+.coa_header2 {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;  
+    color: dodgerblue;
+}
+
+.error_header {
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;  
+    color: red;
+}
+
+
+.line{
+    width: 100%;
+    height: 1px;
+    margin-bottom: 10px;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: 2px solid steelblue;
+    /* position: absolute; */
+}
+
+.line2{
+    width: 100%;
+    height: 1px;
+    margin-bottom: 10px;
+    border-radius: 1px 1px 1px 1px;
+    border-bottom: 2px solid steelblue;
+    /* position: absolute; */   
+}
+
+div > p {
+    margin-top: 5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+label {
+    font-size:12px;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+
+label > p {
+    font-size: 8px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+
+label > p.basic-info {
+    font-size: 48px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+
+label > p.new_stud_info {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    color: royalblue;
+}
+
+input[type=text] {
+    font-size:12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+
+    vertical-align: middle;
+    margin: 5px 5px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid steelblue;
+}
+
+
+select {
+    font-size:12px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+
+    vertical-align: middle;
+    margin: 5px 5px 5px 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid steelblue;
+}
+
+.submit_btn {
+    width: 100px;
+    margin-top: 2em;
+    border-radius: 3px;
+    margin-left: 0%;
+}
+
+.submit_btn > .btn-primary {
+    border-radius: 30px !important;
+    font-size: 13px ;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 170px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.submit_btn > .btn-danger {
+    border-radius: 60px !important;
+    font-size: 12px ;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 150px;
+    font-family: Arial, Helvetica, sans-serif;
+}

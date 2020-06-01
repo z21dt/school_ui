@@ -23,6 +23,7 @@ export class StudentRegistrationStatusComponent implements OnInit {
  
   schoolId:string;
   studentId:number;
+  regcode:string;
 
   @Input() config: SchoolConfig;
   @Input() regStatus: StudentRegStatus;
@@ -37,6 +38,9 @@ export class StudentRegistrationStatusComponent implements OnInit {
 
 
     this.route.paramMap.subscribe(params => {
+      this.regcode = params.get('regcode');
+      console.log('regcode = '+this.regcode);
+
       this.schoolId = params.get('schoolId');
       this.studentId = +params.get('studentId');
 

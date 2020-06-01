@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        <div class="col-md-6">
+            <form [formGroup] = "profileForm" (ngSubmit)= "onSubmit()" action="">
+                <div class="row form-group contact_reg">
+                    <div class="col-md-3"> 
+                        <span> Lacking of NSO:</span>
+                    </div> 
+                    <div class="col-md-4">
+                        <input type="text" formControlName="name_nso" class="form-control"/>
+                    </div>
+                    <div class="col-md-2"> 
+                        <input type="file" name="profile_nso" (change)="onSelectFileNSO($event)"/>
+                    </div> 
+                </div>
+                <div class="row form-group contact_reg">
+                    <div class="col-md-3"> 
+                        <span> Lacking of Deposit Slip:</span>
+                    </div> 
+                    <div class="col-md-4">
+                        <input type="text" formControlName="name_deposit" class="form-control"/>
+                    </div>
+                    <div class="col-md-2"> 
+                        <input type="file" name="profile_deposit" (change)="onSelectFileDeposit($event)"/>
+                    </div> 
+                </div>
+                <!-- <div class="form-group">
+                    <input type="text" formControlName="name" class="form-control" placeholder="Select File"/>
+                 </div>
+                 <div class="form-group">
+                    <input type="file" name="profile" (change)="onSelectFile($event)"/>
+                 </div> -->
+                 <div class="form-group btn_upload" >
+                    <button type="submit" class="btn btn-info">Upload</button>
+                 </div> 
+            </form>
+        </div>
+    </div>
+</div>
