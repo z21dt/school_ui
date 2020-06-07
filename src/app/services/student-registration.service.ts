@@ -68,7 +68,9 @@ export class StudentRegistrationService {
     console.log('Enroll Na sa '+scode);
     console.log(enrollee);
 
-    var url = 'http://localhost:3000/post_api/enroll';
+
+    var url = 'https://salty-eyrie-44763.herokuapp.com/post_api/enroll'
+    //var url = 'http://localhost:3000/post_api/enroll';
       return this.http.post(url, enrollee,httpOptions );
   }
 
@@ -81,7 +83,7 @@ export class StudentRegistrationService {
 
   saveAttachmentDetails(scode:string, studentId:number, doc:string, path:string, filename:string){
 
-      var url = 'http://localhost:3000/post_api/saveAttachment';
+      var url = 'https://salty-eyrie-44763.herokuapp.com/post_api/saveAttachment';
       return this.http.post(url, {
                                   'studentId':studentId,
                                   'docName':doc,
@@ -101,7 +103,7 @@ export class StudentRegistrationService {
   updateEnrollmentStatus(scode:string, studentId:number, enrollStatus:string, regNotes:string){
 
     console.log('updateEnrollmentStatus');
-    var url = 'http://localhost:3000/post_api/updateEnrollmentStatus';
+    var url = 'https://salty-eyrie-44763.herokuapp.com/post_api/updateEnrollmentStatus';
 
     var req = 
     {

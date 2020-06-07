@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:':schoolId/enrollees/enrollmentStatus/:studentId', component:StudentRegListItemComponent},
   
 
-  {path:':schoolId/registration', component:StudentRegistrationComponent},
+  // {path:':schoolId/registration', component:StudentRegistrationComponent},
   {path:':schoolId/registration/status/:studentId', component:StudentRegistrationStatusComponent},
   {path:':schoolId/registration/checkStatus', component:CheckStudentRegistrationStatusComponent},
   {path:':schoolId/registration/checkStatus/:studentId', component:CheckStudentRegistrationStatusComponent},
