@@ -227,7 +227,7 @@ app.post('/post_api/:func', (req, res) => {
 
             const docs = await axios({
 
-                url: 'http://localhost:8080/school_reg/enrollment/student/saveAttachmentDetails',
+                url: wshost + '/enrollment/student/saveAttachmentDetails',
                 method: 'post',
                 data : req.body
             });
@@ -243,7 +243,7 @@ app.post('/post_api/:func', (req, res) => {
             const docs = await axios({
 
 
-                url: 'http://localhost:8080/school_reg/enrollment/student/updateStatus',
+                url: wshost + '/enrollment/student/updateStatus',
                 method: 'post',
                 data : req.body
             });
