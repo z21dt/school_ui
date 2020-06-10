@@ -76,7 +76,7 @@ export class StudentRegistrationService {
 
 
   getEnrollees(scode:string){
-     var url = 'http://localhost:8080/schoolreg/enrollment/student/getEnrollees?scode='+scode;
+     var url = 'https://immense-anchorage-42013.herokuapp.com/enrollment/student/getEnrollees?scode='+scode;
      return this.http.get<any>(url);
   }
 
@@ -95,7 +95,7 @@ export class StudentRegistrationService {
   }
 
   getAttachments(scode:string, studentId:number){
-    var url = 'http://localhost:8080/schoolreg/enrollment/student/getAttachmentDetails?scode='+scode+'&studentId='+studentId;
+    var url = 'https://immense-anchorage-42013.herokuapp.com/enrollment/student/getEnrollees?scode='+scode/enrollment/student/getAttachmentDetails?scode='+scode+'&studentId='+studentId;
     return this.http.get<any>(url);
  }
 
